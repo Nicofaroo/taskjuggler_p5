@@ -69,6 +69,17 @@ resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
 
+resource dev4 "Nicolas Fabra" {
+  email "your.email@example.com"
+  workinghours {
+    mon: 09:00-13:00
+    tue: 09:00-13:00
+    wed: 09:00-13:00
+    thu: 09:00-13:00
+    fri: 09:00-13:00
+  }
+}
+
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
 # into smaller tasks and so on. The innermost tasks describe the real
@@ -161,17 +172,17 @@ task WMGame "Web & Mobile Game" {
 
     task mUIDesign "Mobile UI Design" {
       effort 7d
-      allocate dev3
+      allocate dev3, dev4
       depends WMGame.tgdesign
     }
     task mAppConstruction "Mobile App Construction" {
       effort 14d
-      allocate dev2, dev3
+      allocate dev2, dev3, dev4
       depends WMGame.mobileFE.mUIDesign
     }
     task mAppTesting "Mobile App Testing" {
       effort 5d
-      allocate dev2
+      allocate dev2, dev4
       depends WMGame.mobileFE.mAppConstruction
     }
   }
@@ -184,13 +195,13 @@ task WMGame "Web & Mobile Game" {
 
     task cloudEval "Cloud Provider Evaluation" {
       effort 3d
-      allocate dev1, dev2
+      allocate dev1, dev2, dev4
       /* Se inicia la evaluación una vez completado el desarrollo del back-end */
       depends WMGame.tback.tbackDev
     }
     task cloudDeploy "Cloud Deployment" {
       effort 10d
-      allocate dev1, dev2
+      allocate dev1, dev2, dev4
       depends WMGame.cloudSupport.cloudEval
     }
   }
