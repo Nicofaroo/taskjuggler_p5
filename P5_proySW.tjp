@@ -183,7 +183,7 @@ task WMGame "Web & Mobile Game" {
     task cloudDeploy "Cloud Deployment" {
       effort 10d
       allocate dev1, dev2
-      depends cloudEval
+      depends WMGame.cloudSupport.cloudEval
     }
   }
 
