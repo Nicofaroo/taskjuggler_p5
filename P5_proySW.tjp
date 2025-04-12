@@ -147,6 +147,46 @@ task WMGame "Web & Mobile Game" {
     }    
   }
 
+  /* Tarea para el desarrollo de la versión móvil del Front End */
+  task mobileFE "Mobile Frontend Development" {
+    chargeset mFront
+    responsible dev3
+
+    task mUIDesign "Mobile UI Design" {
+      effort 7d
+      allocate dev3
+      depends WMGame.mobileFE.tgdesign
+    }
+    task mAppConstruction "Mobile App Construction" {
+      effort 14d
+      allocate dev2, dev3
+      depends WMGame.mobileFE.mUIDesign
+    }
+    task mAppTesting "Mobile App Testing" {
+      effort 5d
+      allocate dev2
+      depends WMGame.mobileFE.mAppConstruction
+    }
+  }
+
+  /* Tarea para el soporte del despliegue en la nube del Back End */
+  task cloudSupport "Cloud Deployment Support for Back-End" {
+    chargeset back
+    responsible dev1
+
+    task cloudEval "Cloud Provider Evaluation" {
+      effort 3d
+      allocate dev1, dev2
+      /* Se inicia la evaluación una vez completado el desarrollo del back-end */
+      depends WMGame.tback.tbackDev
+    }
+    task cloudDeploy "Cloud Deployment" {
+      effort 10d
+      allocate dev1, dev2
+      depends cloudEval
+    }
+  }
+
   task ttest "Acceptance tests" {
       effort 10d
       allocate boss
@@ -184,46 +224,6 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.ttest
       charge 12000.0 onstart
     }
-  }
-}
-
-/* Tarea para el desarrollo de la versión móvil del Front End */
-task mobileFE "Mobile Frontend Development" {
-  chargeset mFront
-  responsible dev3
-
-  task mUIDesign "Mobile UI Design" {
-    effort 7d
-    allocate dev3
-    depends WMGame.tgdesign
-  }
-  task mAppConstruction "Mobile App Construction" {
-    effort 14d
-    allocate dev2, dev3
-    depends WMGame.mUIDesign
-  }
-  task mAppTesting "Mobile App Testing" {
-    effort 5d
-    allocate dev2
-    depends mAppConstruction
-  }
-}
-
-/* Tarea para el soporte del despliegue en la nube del Back End */
-task cloudSupport "Cloud Deployment Support for Back-End" {
-  chargeset back
-  responsible dev1
-
-  task cloudEval "Cloud Provider Evaluation" {
-    effort 3d
-    allocate dev1, dev2
-    /* Se inicia la evaluación una vez completado el desarrollo del back-end */
-    depends WMGame.tback.tbackDev
-  }
-  task cloudDeploy "Cloud Deployment" {
-    effort 10d
-    allocate dev1, dev2
-    depends cloudEval
   }
 }
 
