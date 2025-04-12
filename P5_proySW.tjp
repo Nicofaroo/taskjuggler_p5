@@ -197,8 +197,8 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.twebF
       depends WMGame.tback
 
-      depends mobileFE.mAppTesting
-      depends cloudSupport.cloudDeploy
+      depends WMGame.mobileFE
+      depends WMGame.cloudSupport
       }
 
     
