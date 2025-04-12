@@ -19,7 +19,7 @@ project pSix "Web Game"  2024-12-15 +6m {
   # the project reports. If not specified, the current day will be
   # used, but this will likely be outside of the project range, so it
   # can't be seen in the reports.
-  now 2025-02-25-13:00
+  now 2025-04-12-13:00
   # The currency for all money values is the US Dollar.
   currency "EUR"
 
@@ -111,6 +111,12 @@ task WMGame "Web & Mobile Game" {
         author boss
         alert green
         summary "The team has ended the game logic before deadline."
+      }
+      // Incidencia registrada el 12 de abril de 2025
+      journalentry 2025-04-12 "Incidencia: Problema en la integración de módulos" {
+        author dev2
+        alert yellow
+        summary "Se detectó un problema durante la integración de módulos. Se recomienda revisar la asignación de tareas y el proceso de integración para evitar retrasos."
       }
     }
     task tbackDev "Back development" {
