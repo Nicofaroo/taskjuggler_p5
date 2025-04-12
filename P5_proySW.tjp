@@ -381,6 +381,20 @@ taskreport development "" {
   sortresources name.up
 }
 
+taskreport initialPlan "Initial Project Plan" {
+  scenarios plan
+  headline "Baseline Planning (Initial Project Plan)"
+  columns bsi { title "WBS" },
+          name, start, end, effort, cost, revenue,
+          chart { ${TaskTip} }
+  timeformat "%a %Y-%m-%d"
+  loadunit days
+  hideresource @all
+  balance cost rev
+  caption "This report displays the baseline planning of the project."
+}
+
+
 # A list of all employees with their contact details.
 resourcereport contactList "" {
   scenarios actual
