@@ -154,6 +154,9 @@ task WMGame "Web & Mobile Game" {
       actual:effort 20d
       depends WMGame.twebF
       depends WMGame.tback
+
+      depends mobileFE.mAppTesting
+      depends cloudSupport.cloudDeploy
       }
 
     
@@ -192,13 +195,12 @@ task mobileFE "Mobile Frontend Development" {
   task mUIDesign "Mobile UI Design" {
     effort 7d
     allocate dev3
-    /* Depende del diseño general para asegurar coherencia con la arquitectura */
     depends WMGame.tgdesign
   }
   task mAppConstruction "Mobile App Construction" {
     effort 14d
     allocate dev2, dev3
-    depends mUIDesign
+    depends WMGame.mUIDesign
   }
   task mAppTesting "Mobile App Testing" {
     effort 5d
