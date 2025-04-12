@@ -156,7 +156,7 @@ task WMGame "Web & Mobile Game" {
     task mUIDesign "Mobile UI Design" {
       effort 7d
       allocate dev3
-      depends WMGame.mobileFE.tgdesign
+      depends WMGame.tgdesign
     }
     task mAppConstruction "Mobile App Construction" {
       effort 14d
