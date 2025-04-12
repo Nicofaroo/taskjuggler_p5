@@ -72,13 +72,16 @@ resource dev3 "Peter Green" {
 resource dev4 "Nicolas Fabra" {
   email "your.email@example.com"
   workinghours {
-    mon: 09:00-13:00
-    tue: 09:00-13:00
-    wed: 09:00-13:00
-    thu: 09:00-13:00
-    fri: 09:00-13:00
+    sun off
+    mon 09:00-13:00
+    tue 09:00-13:00
+    wed 09:00-13:00
+    thu 09:00-13:00
+    fri 09:00-13:00
+    sat off
   }
 }
+
 
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
