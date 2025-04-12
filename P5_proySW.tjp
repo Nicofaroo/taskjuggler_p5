@@ -149,6 +149,7 @@ task WMGame "Web & Mobile Game" {
 
   /* Tarea para el desarrollo de la versión móvil del Front End */
   task mobileFE "Mobile Frontend Development" {
+    purge chargeset
     chargeset mFront
     responsible dev3
 
@@ -171,6 +172,7 @@ task WMGame "Web & Mobile Game" {
 
   /* Tarea para el soporte del despliegue en la nube del Back End */
   task cloudSupport "Cloud Deployment Support for Back-End" {
+    purge chargeset
     chargeset back
     responsible dev1
 
